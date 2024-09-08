@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicativo Financeiro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="mb-4">Aplicativo Financeiro</h2>
+    <div id="salaryInput">
+        <label for="salary">Digite seu salário mensal:</label>
+        <div class="input-group mb-3">
+            <input type="text" id="salary" class="form-control" placeholder="Salário" onkeypress="handleKeyPress(event)">
+            <input type="text" id="extraIncome" class="form-control" placeholder="Renda Extra" onkeypress="handleKeyPress(event)">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button" onclick="calculate()">Calcular</button>
+            </div>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="includeExtraIncome">
+            <label class="form-check-label" for="includeExtraIncome">Incluir renda extra no montante total</label>
+        </div>
+    </div>
+    <div id="results" style="display: none;">
+        <div class="result-section" id="monthlyCost">
+            <h4 class="result-title">Custos Mensais</h4>
+            <p class="result-text" id="monthlyCostText"></p>
+        </div>
+        <div class="result-section" id="emergencyReserve">
+            <h4 class="result-title">Reserva de Emergência</h4>
+            <p class="result-text" id="emergencyReserveText"></p>
+        </div>
+        <div class="result-section" id="investmentFunds">
+            <h4 class="result-title">Fundos Imobiliários</h4>
+            <p class="result-text" id="investmentFundsText"></p>
+        </div>
+        <div class="result-section" id="investmentStocks">
+            <h4 class="result-title">Ações</h4>
+            <p class="result-text" id="investmentStocksText"></p>
+        </div>
+        <div class="result-section" id="investmentCrypto">
+            <h4 class="result-title">Bitcoin e ETH</h4>
+            <p class="result-text" id="investmentCryptoText"></p>
+        </div>
+        <button class="btn btn-success mb-3 centered-button" onclick="generateReport()">Gerar Relatório</button>
+    </div>
+    
+    <div id="goalInput">
+        <h4>Calculadora de Objetivos Financeiros</h4>
+        <label for="goalName">Nome do Objetivo:</label>
+        <input type="text" id="goalName" class="form-control mb-3" placeholder="Nome do Objetivo">
+        
+        <label for="goalAmount">Valor Necessário (R$):</label>
+        <input type="text" id="goalAmount" class="form-control mb-3" placeholder="Valor Necessário">
+        
+        <label for="goalTime">Prazo (meses):</label>
+        <input type="text" id="goalTime" class="form-control mb-3" placeholder="Prazo em meses">
+        
+        <button class="btn btn-primary centered-button" type="button" onclick="calculateGoal()">Calcular Objetivo</button>
+    </div>
+    
+    <div id="goalResults" style="display: none;">
+        <div class="result-section" id="goalSummary">
+            <h4 class="result-title">Resumo do Objetivo</h4>
+            <p class="result-text" id="goalSummaryText"></p>
+        </div>
+    </div>
+
+    <div id="debtInput">
+        <h4>Planejamento de Dívidas</h4>
+        <label for="debtAmount">Valor da Dívida (R$):</label>
+        <input type="text" id="debtAmount" class="form-control mb-3" placeholder="Valor da Dívida">
+        
+        <label for="debtInterest">Taxa de Juros (% ao mês):</label>
+        <input type="text" id="debtInterest" class="form-control mb-3" placeholder="Taxa de Juros">
+        
+        <label for="debtTime">Prazo (meses):</label>
+        <input type="text" id="debtTime" class="form-control mb-3" placeholder="Prazo em meses">
+        
+        <button class="btn btn-primary centered-button" type="button" onclick="calculateDebt()">Calcular Dívida</button>
+    </div>
+    
+    <div id="debtResults" style="display: none;">
+        <div class="result-section" id="debtSummary">
+            <h4 class="result-title">Resumo da Dívida</h4>
+            <p class="result-text" id="debtSummaryText"></p>
+        </div>
+    </div>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>
